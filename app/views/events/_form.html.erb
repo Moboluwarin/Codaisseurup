@@ -1,4 +1,4 @@
-<%= form_for @room do |f| %>
+<%= form_for @event do |f| %>
   <div class="form-group">
     <label>name</label>
     <%= f.text_field :name, placeholder: "name", class: "form-control" %>
@@ -22,9 +22,19 @@
     <%= f.check_box :includes_drinks %>includes-drinks
   </div>
 
-
+  <div class="form-group">
+    <label>starts-at</label>
+    <%=f.date_field :starts_at, placeholder:"starts-at", class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <label>ends_at</label>
+    <%= f.date_field :ends_at, placeholder: "ends_at", class: "form-control" %>
+  </div>
   <div class="form-group">
     <%= f.check_box :active %>active
+  </div>
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
   </div>
 <% end %>
 
@@ -40,4 +50,4 @@ includes_food:boolean
 includes_drinks:boolean
 starts_at:datetime
 ends_at:datetime
-<!-- active:boolean --> -->
+<!-- active:boolean -->
