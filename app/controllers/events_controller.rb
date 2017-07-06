@@ -9,7 +9,8 @@ class EventsController < ApplicationController
 
 
   def show
-    @categories=@event.categories
+    @categories = @event.categories
+    @photos = @event.photos
   end
 
   def new
@@ -24,9 +25,25 @@ class EventsController < ApplicationController
     else
       render :new
     end
+
+  if @event.save
+    image_params.each do |image|
+      @event.photos.create(image: image)
+    end
+
+    redirect_to edit_event_path(@event), notice: "event successfully created"
+  else
+    render :new
+  end
   end
 
-  def edit; end
+  def edit
+    if current_user.id == @event.user.id
+      @events = @event.photos
+    else
+    redirect_to root_path, notice: "You don't have permission."
+    end
+  end
 
   def update
     if @event.update(event_params)
@@ -34,6 +51,16 @@ class EventsController < ApplicationController
     else
       render :edit
     end
+
+    if @event.update(event_params)
+      image_params.each do |image|
+      @event.photos.create(image: image)
+    end
+
+    redirect_to edit_event_path(@event), notice: "Event successfully updated"
+  else
+    render :edit
+  end
   end
 
   private
@@ -50,5 +77,10 @@ class EventsController < ApplicationController
          :starts_at, :ends_at, :active, category_ids: [])
   end
 
+  
+
+def image_params
+  params[:images].present? ? params.require(:images) : []
+end
 
 end

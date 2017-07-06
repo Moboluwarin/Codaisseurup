@@ -30,6 +30,11 @@
       <li><p>Active-status <%= @event.active %></p></li>
     </ul>
 <div>
+  <h4>Photos</h4>
+<% @photos.each do |photo| %>
+  <%= image_tag photo.image %>
+<% end %>
+
     <h4>Categories</h4>
   <% @categories.each do |category| %>
     <span class="label label-success"><%= category.name %></span>
