@@ -1,3 +1,8 @@
+
+
+
+
+
 <div class="panel panel-primary">
   <div class="panel-heading"></div>
 
@@ -15,22 +20,21 @@
     <h4>Details</h4>
     <ul class="amenities">
     <li><p>Name: <%= @event.name%></p></li>
-    <li><p><%= @event.location %></p></li>
-    <li><p><%= @event.price %></p></li>
-    <li><p><%= @event.capacity %></p></li>
-    <li><p><%= @event.includes_food %></p></li>
-    <li><p><%= @event.includes_drinks %></p></li>
-      <li><p><%= @event.starts_at %></p></li>
-      <li><p><%= @event.ends_at %></p></li>
-      <li><p><%= @event.active %></p></li>
+    <li><p>Location:<%= @event.location %></p></li>
+    <li><p>Price: <%= @event.price %></p></li>
+    <li><p>Capacity <%= @event.capacity %></p></li>
+    <li><p>Includes Food <%= @event.includes_food %></p></li>
+    <li><p>Includes Drinks: <%= @event.includes_drinks %></p></li>
+      <li><p>Start Date <%= @event.starts_at %></p></li>
+      <li><p>End Date <%= @event.ends_at %></p></li>
+      <li><p>Active-status <%= @event.active %></p></li>
     </ul>
+<div>
     <h4>Categories</h4>
   <% @categories.each do |category| %>
     <span class="label label-success"><%= category.name %></span>
   <% end %>
 
   </div>
-
-</div>
 
 <%= link_to "Back", events_path, class: "btn btn-default" %>

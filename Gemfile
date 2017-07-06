@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.4.1'
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
@@ -38,6 +38,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_girl_rails', '4.7.0'
    gem 'faker', '1.6.6'
+   # rest of the code.
 
 end
 
@@ -48,6 +49,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # rest of the code
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -70,4 +73,8 @@ gem 'devise', '~> 4.2'
 group :test do
   # ...
   gem 'shoulda-matchers', '~> 3.1'
+
+gem 'rails_12factor', group: :production
+
 end
+gem 'carrierwave', '0.11.2'
